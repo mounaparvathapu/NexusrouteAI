@@ -22,14 +22,23 @@ An AI-powered smart route optimization and navigation platform designed to help 
 ✅ Scalable architecture for future integration with live traffic and mapping APIs
 
 🧰 Tech Stack
+
 Python
+
 HTML5
+
 CSS3
+
 JavaScript
+
 React.js
+
 Node.js
+
 AI/ML Concepts
+
 REST APIs
+
 Git & GitHub
 
 🎯 Project Objectives
