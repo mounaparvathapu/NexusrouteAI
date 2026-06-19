@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #050a14;
+  color: #e2eaf5;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0b1628; }
+::-webkit-scrollbar-thumb { background: #1a2f4a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #00e5ff44; }
+
+/* ── Leaflet overrides ────────────────────────────────────────────────────── */
+.leaflet-container {
+  background: #0a1929 !important;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.leaflet-tile {
+  filter: brightness(0.75) saturate(0.6) hue-rotate(190deg);
+}
+
+.leaflet-control-zoom a {
+  background: #0f1e35 !important;
+  color: #00e5ff !important;
+  border-color: #1a2f4a !important;
+}
+
+.leaflet-control-zoom a:hover {
+  background: #1a2f4a !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0f1e35;
+  border: 1px solid #1a2f4a;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,229,255,0.15);
+  color: #e2eaf5;
+}
+
+.leaflet-popup-tip {
+  background: #0f1e35;
+}
+
+/* ── Animations ───────────────────────────────────────────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,229,255,0.3); }
+  50%       { box-shadow: 0 0 30px rgba(0,229,255,0.6); }
+}
+
+@keyframes scan-line {
+  0%   { transform: translateY(-100%); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(200vh); opacity: 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes dash-flow {
+  to { stroke-dashoffset: -100; }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* ── Glass card ───────────────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(15, 30, 53, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 47, 74, 0.8);
+}
+
+/* ── Neon text ────────────────────────────────────────────────────────────── */
+.text-neon {
+  color: #00e5ff;
+  text-shadow: 0 0 20px rgba(0,229,255,0.5);
+}
+
+.text-neon-green {
+  color: #00ff94;
+  text-shadow: 0 0 20px rgba(0,255,148,0.5);
+}
+
+/* ── Input ────────────────────────────────────────────────────────────────── */
+.nexus-input {
+  background: rgba(11, 22, 40, 0.9);
+  border: 1px solid #1a2f4a;
+  color: #e2eaf5;
+  font-family: 'DM Sans', sans-serif;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nexus-input:focus {
+  outline: none;
+  border-color: #00e5ff;
+  box-shadow: 0 0 0 2px rgba(0,229,255,0.15);
+}
+
+.nexus-input::placeholder { color: #3a5270; }
+
+/* ── Button ───────────────────────────────────────────────────────────────── */
+.nexus-btn {
+  background: linear-gradient(135deg, #00e5ff22, #00ff9422);
+  border: 1px solid #00e5ff;
+  color: #00e5ff;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.nexus-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #00e5ff, #00ff94);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.nexus-btn:hover::before { opacity: 0.12; }
+.nexus-btn:hover {
+  box-shadow: 0 0 24px rgba(0,229,255,0.35);
+  transform: translateY(-1px);
+}
+.nexus-btn:active { transform: translateY(0); }
+
+.nexus-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ── Route legend dots ────────────────────────────────────────────────────── */
+.route-dot-main { background: #00e5ff; box-shadow: 0 0 8px #00e5ff; }
+.route-dot-alt  { background: #00ff94; box-shadow: 0 0 8px #00ff94; }
+
+/* ── Traffic badge ────────────────────────────────────────────────────────── */
+.traffic-low      { color: #00ff94; border-color: #00ff9444; background: #00ff9411; }
+.traffic-moderate { color: #ffb800; border-color: #ffb80044; background: #ffb80011; }
+.traffic-high     { color: #ff3d5a; border-color: #ff3d5a44; background: #ff3d5a11; }
+
+/* ── AI recommendation card ───────────────────────────────────────────────── */
+.ai-glow {
+  box-shadow: 0 0 40px rgba(0,229,255,0.12), inset 0 0 40px rgba(0,229,255,0.04);
+}
